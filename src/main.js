@@ -26,7 +26,7 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
-app.use(router).use(VueAxios,axios).use(ElementPlus)
+app.use(router).use(VueAxios, axios).use(ElementPlus)
 app.use(vue3videoPlay)
 app.use(VueMarkdownEditor)
 app.mount('#app')

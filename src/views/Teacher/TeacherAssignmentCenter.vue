@@ -80,6 +80,7 @@
             <el-empty v-show="assignments_empty" description="No assignment"></el-empty>
           </div>
         </el-main>
+        <router-view></router-view>
      </div>
   </div>
 </template>

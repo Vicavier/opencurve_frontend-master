@@ -59,6 +59,7 @@ const routes = [
         path: '/userPage',
         component: Userpage,
         children: [
+            // Student
             {
                 path: 'StudentMain',
                 component: StudentMain,
@@ -66,6 +67,13 @@ const routes = [
             {
                 path: 'StudentCourseCenter',
                 component: StudentCourseCenter,
+                children: [
+                    {
+                        path: 'StudentDetailCourse/:course_id',
+                        name: 'StudentDetailCourse',
+                        component: StudentDetailCourse
+                    },
+                ]
             },
             {
                 path: 'StudentNotificationCenter',
@@ -76,6 +84,13 @@ const routes = [
                 path: 'StudentAssignmentCenter',
                 name: 'StudentAssignmentCenter',
                 component: StudentAssignmentCenter,
+                children: [
+                    {
+                        path: 'StudentDetailAssignment/:assignment_id',
+                        name: 'StudentDetailAssignment',
+                        component: StudentDetailAssignment
+                    },
+                ]
             },
             {
                 path: 'StudentSelfCenter',
@@ -100,6 +115,7 @@ const routes = [
                     }
                 ]
             },
+            //Teacher
             {
                 path: 'TeacherMain',
                 name: 'TeacherMain',
@@ -108,17 +124,31 @@ const routes = [
             {
                 path: 'TeacherCourseCenter',
                 name: 'TeacherCourseCenter',
-                component: TeacherCourseCenter
+                component: TeacherCourseCenter,
+                children: [
+                    {
+                        path: 'TeacherDetailCourse/:course_id',
+                        name: 'TeacherDetailCourse',
+                        component: TeacherDetailCourse
+                    },
+                ]
             },
             {
                 path: 'TeacherNotificationCenter',
                 name: 'TeacherNotificationCenter',
-                component: TeacherNotificationCenter
+                component: TeacherNotificationCenter,
             },
             {
                 path: 'TeacherAssignmentCenter',
                 name: 'TeacherAssignmentCenter',
-                component: TeacherAssignmentCenter
+                component: TeacherAssignmentCenter,
+                children: [
+                    {
+                        path: 'TeacherDetailAssignment/:assignment_id',
+                        name: 'TeacherDetailAssignment',
+                        component: TeacherDetailAssignment
+                    }
+                ]
             },
             {
                 path: 'TeacherSelfCenter',
@@ -139,6 +169,7 @@ const routes = [
                     }
                 ]
             },
+            //Administrator
             {
                 path: 'AdminMain',
                 name: 'AdminMain',
@@ -161,36 +192,6 @@ const routes = [
             },
         ]
     },
-
-    // Student
-
-    {
-        path: '/StudentDetailCourse/:course_id',
-        name: 'StudentDetailCourse',
-        component: StudentDetailCourse
-    },
-    {
-        path: '/StudentDetailAssignment/:assignment_id',
-        name: 'StudentDetailAssignment',
-        component: StudentDetailAssignment
-    },
-
-    // Administrator
-
-
-    // Teacher
-
-    {
-        path: '/TeacherDetailCourse/:course_id',
-        name: 'TeacherDetailCourse',
-        component: TeacherDetailCourse
-    },
-
-    {
-        path: '/TeacherDetailAssignment/:assignment_id',
-        name: 'TeacherDetailAssignment',
-        component: TeacherDetailAssignment
-    }
 ]
 
 const router = createRouter({

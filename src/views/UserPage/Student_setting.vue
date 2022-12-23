@@ -7,23 +7,31 @@
           <el-form-item label="手机">
             <span v-if="!isSetPhone">188****6979</span>
             <el-input v-model="sizeForm.phone" style="width:280px" v-if="isSetPhone"></el-input>
-            <el-button type="primary" icon="el-icon-edit" circle style="float:right" @click="setPhone()"></el-button>
+
+            <el-button type="primary" circle @click="setPhone()" v-if="!checkPhone"><el-icon style="vertical-align: middle"><Edit /></el-icon></el-button>
+            <el-button type="primary" circle v-if="checkPhone" @click="savePhone()" color="green"><el-icon style="vertical-align: middle"><Check /></el-icon></el-button>
           </el-form-item>
           <el-form-item label="邮箱">
             <span v-if="!isSetEmail">yang_j****an@163.com</span>
             <el-input v-model="sizeForm.email" style="width:280px" v-if="isSetEmail"></el-input>
-            <el-button type="primary" icon="el-icon-edit" circle style="float:right" @click="setEmail()"></el-button>
+
+            <el-button type="primary" circle @click="setEmail()" v-if="!checkEmail"><el-icon style="vertical-align: middle"><Edit /></el-icon></el-button>
+            <el-button type="primary" circle v-if="checkEmail" @click="saveEmail()" ><el-icon style="vertical-align: middle"><Check /></el-icon></el-button>
           </el-form-item>
           <el-form-item label="注销账号">
-            <el-button type="danger" icon="el-icon-delete" circle @click="confirm_delete"></el-button>
+            <el-button type="primary" circle @click="confirm_delete()" color="red"><el-icon style="vertical-align: middle"><Delete /></el-icon></el-button>
           </el-form-item>
           <el-form-item label="隐私设置">
-            
+            <span>展示隐私（别人将看到您的生日，书院，院系等信息）</span>
             <el-switch
               v-model="value"
-              active-color="#13ce66"
-              inactive-color="#ff4949">
-            </el-switch>
+              class="mt-2"
+              style="margin-left: 24px"
+              inline-prompt
+              active-icon="Check"
+              inactive-icon="Close"
+              active-color="green"
+            />
           
           </el-form-item>
         </el-form>
@@ -34,7 +42,12 @@
 </template>
 
 <script>
+import { Check } from '@element-plus/icons-vue';
+
 export default {
+  components: {
+    Check
+},
   data() {
     return {
       value: true,
@@ -43,7 +56,9 @@ export default {
         email: 'yang_jia_jian@163.com',
       },
       isSetPhone: false,
-      isSetEmail: false
+      isSetEmail: false,
+      checkPhone: false,
+      checkEmail: false,
     }
   },
   methods: {
@@ -67,9 +82,21 @@ export default {
     },
     setPhone() {
       this.isSetPhone = !this.isSetPhone
+      this.checkPhone = !this.checkPhone
     },
     setEmail() {
       this.isSetEmail = !this.isSetEmail
+      this.checkEmail = !this.checkEmail
+    },
+    savePhone() {
+      //TODO: commit modified phone to database
+      this.isSetPhone = !this.isSetPhone
+      this.checkPhone = !this.checkPhone
+    },
+    saveEmail() {
+      //TODO: commit modified email to database
+      this.isSetEmail = !this.isSetEmail
+      this.checkEmail = !this.checkEmail
     }
   }
 }
