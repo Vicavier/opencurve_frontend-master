@@ -65,6 +65,6 @@ export default {
 .mainpage-student{
   width:80%;
   margin:0 auto;
-  background-color: rgb(243,244,246);
+  background-color: #fff;
 }
 </style>

@@ -154,7 +154,7 @@ export default {
 .notification-center-stu{
   width:80%;
   margin:0 auto;
-  background-color: rgb(243,244,246);
+  background-color: #fff;
 }
 .info_card {
   padding: 5px;
